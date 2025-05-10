@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="notifications">
+                <i class="bi bi-bell"></i>
+            </div>
+            <div class="profile">
+                <i class="bi bi-person-circle"></i>
+                <h1>Joe Smith</h1>
+                <i class="bi bi-caret-down"></i>
+            </div>
+        </div>
+        <div class="content">
+            <div class="left-column">
+                <div class="box">
+                    <h1>Source Material</h1>
+                    <textarea class="box-content" id="prompt"></textarea>
+                </div>
+                <div class="box">
+                    <h1>Source Material Summary</h1>
+                    <p class="box-content" id="summary"></p>
+                    <button style="margin: auto;" class="button" onclick="onGenerateSummary()">Generate Summary</button>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="card">
+                    <h1>FlashCards</h1>
+                    <div class="input-group">
+                        <h1 style="margin: 0;">Pages:</h1>
+                        <input type="number" min="1" max="50" value="10" style="background-color:  #262f41; font-size: xx-large;" />
+                    </div>
+                    <button class="button">Generate</button>
+                </div>
+
+                <div class="quiz">
+                    <h1>Quizzes</h1>
+                    <div class="input-group">
+                        <h1 style="margin: 0;">Questions:</h1>
+                        <input type="number" min="1" max="30" value="10" style="background-color:  #262f41; font-size: xx-large;" />
+                    </div>
+                    <h1>Format</h1>
+                    <div class="quiz-options">
+                        <label>
+                            <input type="checkbox" />
+                            MCQ
+                        </label>
+                        <label>
+                            <input type="checkbox" />
+                            Fill in the blanks
+                        </label>
+                        <label>
+                            <input type="checkbox" />
+                            True/False
+                        </label>
+                    </div>
+                    <h1>Difficulty</h1>
+                    <div class="difficulty">
+                        <label>
+                            <input name="difficulty" type="radio" />
+                            Easy
+                        </label>
+                        <label>
+                            <input name="difficulty" type="radio" />
+                            Medium
+                        </label>
+                        <label>
+                            <input name="difficulty" type="radio" />
+                            Hard
+                        </label>
+                    </div>
+                    <button class="button">Generate</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

@@ -1,0 +1,235 @@
+body {
+    background: linear-gradient(135deg, #111623, #1a202c);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+}
+
+.profile img {
+    height: 40px;
+}
+
+.profile h1 {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.left-column {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.box {
+    flex: 1;
+    background-color: #1A202C;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box h1 {
+    font-size: large;
+    margin-top: 0;
+}
+
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    background: rgba(26, 32, 44, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(124, 92, 252, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Add a subtle purple glow to navbar */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 92, 252, 0.6), transparent);
+    z-index: -1;
+}
+
+/* Notifications section */
+.notifications {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: x-large;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.notifications i:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Profile section in navbar */
+.profile {
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 15px;
+}
+
+.profile:hover {
+    background: rgba(124, 92, 252, 0.2);
+}
+
+.profile i.bi-person-circle {
+    font-size: xx-large;
+}
+
+.profile i.bi-caret-down {
+    font-size: large;
+}
+
+.profile h1 {
+    margin: 0;
+    font-size: large;
+}
+.right-column {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card, .quiz {
+    background-color: #262f41;
+    border-radius: 10px;
+    gap: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card h1, .quiz h1 {
+    font-size: xx-large;
+    margin-top: 0;
+}
+
+.input-group {
+    border: 2px solid #7C5CFC;
+    display: flex;
+    padding: 15px;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.input-group input {
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    font-size: x-large;
+}
+
+.button {
+    background-color: #7C5CFC;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: large;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    border: 1px solid #7C5CFC;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.quiz-options label {
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    gap: 10px;
+}
+
+.difficulty {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border: 2px solid #7C5CFC;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.difficulty label {
+    display: flex;
+    align-items: center;
+    font-size: large;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.box-content{
+    background-color: #252e3f;
+    color: white;
+    border-radius: 8px;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+}

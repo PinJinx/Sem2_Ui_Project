@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend.In - Authentication</title>
+    <link rel="stylesheet" href="sign in.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                    Spend.In
+                </a>
+            </div>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">Features</a>
+                </div>
+                <a href="#">Why AI-Assisted?</a>
+                <a href="#">How it Works</a>
+                <a href="#">About Us</a>
+            </div>
+        </nav>
+
+        <!-- Register Form -->
+        <div class="auth-container" id="register-form">
+            <div class="auth-form">
+                <h1>Register</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Sign up</button>
+                </form>
+                <p class="auth-link">Already have an account? <a href="#" id="login-link">Sign in</a></p>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="auth-container" id="login-form" style="display: none;">
+            <div class="auth-form">
+                <h1>Login</h1>
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" placeholder="USERNAME/EMAIL" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-password" name="password" placeholder="PASSWORD" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit</button>
+                </form>
+                <p class="auth-link">Don't have an account? <a href="#" id="register-link">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to toggle between login and register forms
+        document.getElementById('login-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+
+        document.getElementById('register-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
