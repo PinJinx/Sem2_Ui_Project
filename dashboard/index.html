@@ -21,62 +21,100 @@
             <div class="left-column">
                 <div class="box">
                     <h1>Source Material</h1>
-                    <textarea class="box-content" id="prompt"></textarea>
+                    <textarea class="box-content" style="font-size: large;" id="prompt"></textarea>
                 </div>
                 <div class="box">
-                    <h1>Source Material Summary</h1>
-                    <p class="box-content" id="summary"></p>
+                    <h1>Quick Summary</h1>
+                    <div id="summary_placeholder_text" style="text-align: center;">
+                        <img src="/assets/icons8-bulb-100.png" />
+                        <h3 id="summary_placeholder" >Click generate to get a quick Summary!</h3>
+                    </div>
+                    <p id="summary_box" class="box-content" id="summary" style="visibility: hidden;"></p>
                     <button style="margin: auto;" class="button" onclick="onGenerateSummary()">Generate Summary</button>
                 </div>
             </div>
+            <!--PopUp Screen-->
+            <div id="Quiz_popup" style="visibility: hidden;  position: fixed; height: 100%; width: 100%; backdrop-filter: blur(5px); z-index: 2; display: flex; justify-content: center; align-items: center;">
+                <div style="position: relative; z-index: 2; background-color: #f7f7f7; padding: 5rem; border-radius: 20px;">
+                    <!-- Close button -->
+                    <button onclick="QuizPopup()" style="position: absolute; top: 10px; right: 10px; border: none; background-color: #f7f7f7; cursor: pointer; padding: 5px; border-radius: 10px; z-index: 3;">
+                        <i class="bi bi-x" style="font-size: xx-large;"></i>
+                    </button>
+                    <!-- -------------- -->
+                    <h1 style="text-align: center;">Quiz Settings</h1>
+                    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
+                        <div>
+                            <div class="input-group" style="margin-bottom: 20px;">
+                                <h1 style="margin: 0;">Questions:</h1>
+                                <input type="number"  id="questions" min="1" max="30" value="10" style="background-color:  #f7f7f7; font-size: xx-large;" />
+                            </div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="checkbox" value="mcq," class="chckbox" checked id="mcq" />
+                                    MCQ
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="fill in the blanks," class="chckbox" />
+                                    Fill in the blanks
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="true or false," class="chckbox" />
+                                    True/False
+                                </label>
+                            </div>
+                        </div>
+                        <div style="gap: 20px;">
+                            <div class="difficulty">
+                                <label>
+                                    <input name="difficulty" class="difficulty_bttns" value="easy" type="radio" checked/>
+                                    Easy
+                                </label>
+                                <label>
+                                    <input name="difficulty" value="medium" class="difficulty_bttns" type="radio" />
+                                    Medium
+                                </label>
+                                <label>
+                                    <input name="difficulty" value="hard" class="difficulty_bttns" type="radio" />
+                                    Hard
+                                </label>
+                            </div>
+                            <button class="button" onclick="GenerateQuiz()">Generate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="right-column">
-                <div class="card">
+            <div id="flashcard_popup" style="visibility: hidden;  position: fixed; height: 100%; width: 100%; backdrop-filter: blur(5px); z-index: 2; display: flex; justify-content: center; align-items: center;">
+                <div style="position: relative; z-index: 2; background-color: #f7f7f7; padding: 5rem; border-radius: 20px;">
+                    <!-- Close button -->
+                    <button onclick="FlashCardPopup()" style="position: absolute; top: 10px; right: 10px; border: none; background-color: #f7f7f7; cursor: pointer; padding: 5px; border-radius: 10px; z-index: 3;">
+                        <i class="bi bi-x" style="font-size: xx-large;"></i>
+                    </button>
+                    <!-- -------------- -->
                     <h1>FlashCards</h1>
                     <div class="input-group">
                         <h1 style="margin: 0;">Pages:</h1>
-                        <input type="number" min="1" max="50" value="10" style="background-color:  #262f41; font-size: xx-large;" />
+                        <input type="number" min="1" max="50" value="10" style="background-color:  #f7f7f7; font-size: xx-large;" />
                     </div>
                     <button class="button">Generate</button>
                 </div>
-
-                <div class="quiz">
+            </div>
+            <div class="right-column">
+                <div  class="contentcards" onclick="QuizPopup()">
                     <h1>Quizzes</h1>
-                    <div class="input-group">
-                        <h1 style="margin: 0;">Questions:</h1>
-                        <input type="number" min="1" max="30" value="10" style="background-color:  #262f41; font-size: xx-large;" />
-                    </div>
-                    <h1>Format</h1>
-                    <div class="quiz-options">
-                        <label>
-                            <input type="checkbox" />
-                            MCQ
-                        </label>
-                        <label>
-                            <input type="checkbox" />
-                            Fill in the blanks
-                        </label>
-                        <label>
-                            <input type="checkbox" />
-                            True/False
-                        </label>
-                    </div>
-                    <h1>Difficulty</h1>
-                    <div class="difficulty">
-                        <label>
-                            <input name="difficulty" type="radio" />
-                            Easy
-                        </label>
-                        <label>
-                            <input name="difficulty" type="radio" />
-                            Medium
-                        </label>
-                        <label>
-                            <input name="difficulty" type="radio" />
-                            Hard
-                        </label>
-                    </div>
-                    <button class="button">Generate</button>
+                    <img src="/assets/icons8-target-96.png">
+                </div>
+                <div  class="contentcards" onclick="FlashCardPopup()">
+                    <h1>Flash Cards</h1>
+                    <img src="/assets/icons8-red-card-100.png">
+                </div>
+                <div  class="contentcards" onclick="FlashCardPopup()">
+                    <h1>Notes</h1>
+                    <img src="/assets/icons8-notes-100.png">
+                </div>
+                <div class="contentcards" onclick="FlashCardPopup()">
+                    <h1>Story</h1>
+                    <img src="/assets/icons8-literature-100.png">
                 </div>
             </div>
         </div>
