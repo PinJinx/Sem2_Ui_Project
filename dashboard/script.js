@@ -3,12 +3,13 @@ let apikey = "AIzaSyCylC6TyToVYgBIdptfgBycVBH1F45l6Vw";
 let prompt = "";
 
 let question_num = 10;
+let flashcard_num = 10;
 let question_difficulty = "easy";
 let questionformat = "mcq,";
 
 
 document.addEventListener('DOMContentLoaded', () => {
-        //Checking
+    //Checking
     document.getElementById('prompt').addEventListener('change',(event)=>{
         prompt = event.target.value;
         sessionStorage.setItem("prompt",prompt);
@@ -19,6 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         question_num = event.target.value;
         console.log(question_num);
     })
+
+    document.getElementById('card_num').addEventListener("change",(event)=>{
+        flashcard_num = event.target.value;
+        console.log(flashcard_num);
+    })
+
 
     document.querySelectorAll(".chckbox").forEach((element)=>{
         element.addEventListener('change',()=>{
@@ -126,23 +133,28 @@ function FlashCardPopup(){
     ele.style.visibility = (ele.style.visibility === "visible") ? "hidden" : "visible";
 }
 
+
+//This is for flashcards
 async function GenerateFlashCards()
 {
     try{
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
+            method:'POST',
             headers:{
                 "Content-Type": "application/json",
             },
             body:JSON.stringify({
                 "contents": [{
-                    "parts": [{"text":"generate a short summary for"+prompt}]
+                    "parts": [{"text":`Generate a comprehensive list of key points from the provided source which must be comprised in maximum of ${flashcard_num} points that would be ideal for creating flashcards. Each point should capture an essential concept, definition, fact, or relationship that would be important to remember. Format it as list of string like ["point 1","point two"] must be in this exact format just this without explanations or commentary. Focus only on the most significant information that would be valuable for study and retention. Source text:`+prompt}]
                 }]
             })
         })
-        const data  = response.json();
+        const data  = await response.json();
+
         if (data.candidates && data.candidates[0].content) {
             let text = data.candidates[0].content.parts[0].text;
-            document.getElementById('cards_disp').innerText = text;
+            //Its getting stored here
+            sessionStorage.setItem("Cards",text);
         } else {
             console.log('No response');
         }
