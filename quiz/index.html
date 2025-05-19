@@ -1,3 +1,23 @@
 <body>
-    <p id="quiz_disp">THis is text</p>
+    <h1 id="Question">Sample Question</h1>
+    <!-- McQS -->
+    <div id="mcqdiv">
+        <button value="a" class="mcq_op">Option A.</button>
+        <button value="b" class="mcq_op">Option B.</button>
+        <button value="c" class="mcq_op">Option C.</button>
+        <button value="d" class="mcq_op">Option D.</button>
+    </div>
+    <!-- Tru/False -->
+    <div id="tfdiv">
+        <button value="true" class="tf_op">A. True</button>
+        <button value="false" class="tf_op">B. False</button>
+    </div>
+    <!--Fill in blank-->
+    <div id="fibdiv">
+        <input placeholder="type your answer here..." id="fib_op" /> 
+    </div>
+
+    <button onclick="OnClickNext()" >Next</button>
+    <button onclick="OnClickBack()" >Back</button>
 </body>
+<script src="script.js"></script>

@@ -106,7 +106,19 @@ async function GenerateQuiz()
             },
             body:JSON.stringify({
                 "contents": [{
-                    "parts": [{"text":`Generate with a quiz with options in all cases as just a json file something like this{{"title": "Sample Quiz","difficulty": "medium","questions": [{"type": "mcq","question": "Which planet is known as the Red Planet?","options": ["Earth", "Mars", "Jupiter", "Saturn"],"answer": "Mars"},{"type": "fill_in_blank","question": "The chemical symbol for water is ____.","answer": "H2O"},{"type": "true_false","question": "The Great Wall of China is visible from the moon.","answer": false}]}} no additional text consisting of ${questionformat} with a difficulty ${question_difficulty}  on the topic:`+prompt}]
+                    "parts": [{"text":`Generate a quiz with ${question_difficulty} difficulty having ${question_num} much questions with the following question types:${questionformat} on the topic: ${prompt} The response should be in JSON format with the following structure make sure it is easily parsable in js:
+                        {
+                            "title": "Something Quiz",
+                            "difficulty": "${question_difficulty}",
+                            "questions": [
+                            {
+                                "type": "choose from mcq/true_false/fill_in_blank",
+                                "question": "Question text here?",
+                                "options": ["Option 1", "Option 2", "Option 3", "Option 4"] (applicable only for mcq type),
+                                "answer": "Correct option/answer here"
+                            },
+                        ]
+                        }`}]
                 }]
             })
         })
@@ -114,6 +126,7 @@ async function GenerateQuiz()
         if (data.candidates && data.candidates[0].content) {
             let text = data.candidates[0].content.parts[0].text;
             sessionStorage.setItem("quiz",text);
+            window.location.href = "/quiz/index.html";
         } else {
             console.log('No response');
         }
@@ -145,7 +158,7 @@ async function GenerateFlashCards()
             },
             body:JSON.stringify({
                 "contents": [{
-                    "parts": [{"text":`Generate a comprehensive list of key points from the provided source which must be comprised in maximum of ${flashcard_num} points that would be ideal for creating flashcards. Each point should capture an essential concept, definition, fact, or relationship that would be important to remember. Format it as list of string like ["point 1","point two"] must be in this exact format just this without explanations or commentary. Focus only on the most significant information that would be valuable for study and retention. Source text:`+prompt}]
+                    "parts": [{"text":`Generate a comprehensive list of key points from the provided source which must be comprised in maximum of ${flashcard_num} points that would be ideal for creating flashcards. Each point should capture an essential concept, definition, fact, or relationship that would be important to remember. Format it like point1@#@point2@#@point3 must be in this exact format nothing else just this without explanations or commentary. Focus only on the most significant information that would be valuable for study and retention. Source text:`+prompt}]
                 }]
             })
         })
@@ -155,6 +168,7 @@ async function GenerateFlashCards()
             let text = data.candidates[0].content.parts[0].text;
             //Its getting stored here
             sessionStorage.setItem("Cards",text);
+            window.location.href = "/flashcard/index.html";
         } else {
             console.log('No response');
         }
