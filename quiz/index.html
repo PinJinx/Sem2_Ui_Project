@@ -1,23 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
 <body>
-    <h1 id="Question">Sample Question</h1>
-    <!-- McQS -->
-    <div id="mcqdiv">
-        <button value="a" class="mcq_op">Option A.</button>
-        <button value="b" class="mcq_op">Option B.</button>
-        <button value="c" class="mcq_op">Option C.</button>
-        <button value="d" class="mcq_op">Option D.</button>
-    </div>
-    <!-- Tru/False -->
-    <div id="tfdiv">
-        <button value="true" class="tf_op">A. True</button>
-        <button value="false" class="tf_op">B. False</button>
-    </div>
-    <!--Fill in blank-->
-    <div id="fibdiv">
-        <input placeholder="type your answer here..." id="fib_op" /> 
+    <div class="quiz-container fade-in">
+        <div class="progress-bar"></div>
+        
+        <h1 id="Question">What is the capital city of France, known for its iconic Eiffel Tower and rich cultural heritage?</h1>
+        
+        <div class="question-options">
+            <!-- MCQ Options -->
+            <div id="mcqdiv">
+                <button value="a" class="mcq_op">A. London</button>
+                <button value="b" class="mcq_op">B. Berlin</button>
+                <button value="c" class="mcq_op">C. Paris</button>
+                <button value="d" class="mcq_op">D. Rome</button>
+            </div>
+            
+            <!-- True/False Options -->
+            <div id="tfdiv">
+                <button value="true" class="tf_op">A. True</button>
+                <button value="false" class="tf_op">B. False</button>
+            </div>
+            
+            <!-- Fill in Blank -->
+            <div id="fibdiv">
+                <input placeholder="Type your answer here..." id="fib_op" /> 
+            </div>
+            
+            <!-- Feedback Message -->
+            <div id="feedback" class="feedback-message"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+            <button class="nav-btn3 nav-btn" onclick="OnClickNext()">Quit</button>
+            <div class="nav-buttons">
+                <button class="nav-btn1  nav-btn" onclick="OnClickBack()">Back</button>
+                <button class="nav-btn2  nav-btn" onclick="OnClickNext()">Next</button>
+            </div>
+        </div>
     </div>
 
-    <button onclick="OnClickNext()" >Next</button>
-    <button onclick="OnClickBack()" >Back</button>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+</html>
