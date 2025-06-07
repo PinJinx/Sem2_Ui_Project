@@ -19,12 +19,12 @@ function DrawQuiz() {
     document.getElementById("feedback").style.display = "none";
     document.getElementById("feedback").className = "feedback-message";
     
-    document.getElementById("mcqdiv").style.visibility = "hidden";
-    document.getElementById("tfdiv").style.visibility = "hidden";
-    document.getElementById("fibdiv").style.visibility = "hidden";
+    document.getElementById("mcqdiv").style.display = "none";
+    document.getElementById("tfdiv").style.display = "none";
+    document.getElementById("fibdiv").style.display = "none";
     
     if(qs.type === "mcq") {
-        document.getElementById("mcqdiv").style.visibility = "visible";
+        document.getElementById("mcqdiv").style.display = "grid";
         let options = document.getElementsByClassName("mcq_op");
         for(let i = 0; i < 4; i++) {
             options[i].innerHTML = qs.options[i];
@@ -37,7 +37,7 @@ function DrawQuiz() {
     }
     
     if(qs.type === "true_false") {
-        document.getElementById("tfdiv").style.visibility = "visible";
+        document.getElementById("tfdiv").style.display = "inline";
         let options = Array.from(document.getElementsByClassName("tf_op"));
         options.forEach(element => {
             element.addEventListener("click", () => {
@@ -49,7 +49,7 @@ function DrawQuiz() {
     }
     
     if(qs.type === "fill_in_blank") {
-        document.getElementById("fibdiv").style.visibility = "visible";
+        document.getElementById("fibdiv").style.display = "inline";
         document.getElementById("fib_op").addEventListener("keypress", (event) => {
             if(event.key === "Enter" && !isAnswered) {
                 handleFillInBlankAnswer(event.target.value, qs);
@@ -62,7 +62,13 @@ function handleMCQAnswer(selectedIndex, question) {
     isAnswered = true;
     let options = document.getElementsByClassName("mcq_op");
     let isCorrect = question.options[selectedIndex] === question.answer;
-    
+
+
+    let userAns = sessionStorage.getItem("useranswer") || "";
+    userAns +=question.options[selectedIndex]+"#@#";
+    sessionStorage.setItem("useranswer",userAns);
+
+
     for(let i = 0; i < options.length; i++) {
         options[i].classList.add("disabled");
     }
@@ -85,6 +91,10 @@ function handleTrueFalseAnswer(selectedElement, question) {
     isAnswered = true;
     let options = Array.from(document.getElementsByClassName("tf_op"));
     let isCorrect = selectedElement.value === question.answer.toString();
+
+    let userAns = sessionStorage.getItem("useranswer") || "";
+    userAns +=selectedElement.value +"#@#";
+    sessionStorage.setItem("useranswer",userAns);
     
     options.forEach(option => {
         option.classList.add("disabled");
@@ -105,7 +115,11 @@ function handleFillInBlankAnswer(userAnswer, question) {
     isAnswered = true;
     let input = document.getElementById("fib_op");
     let isCorrect = userAnswer.toLowerCase().trim() === question.answer.toLowerCase().trim();
-    
+
+    let userAns = sessionStorage.getItem("useranswer") || "";
+    userAns += userAnswer.toLowerCase().trim() +"#@#";
+    sessionStorage.setItem("useranswer",userAns);
+
     input.classList.add("disabled");
     input.disabled = true;
     
@@ -138,12 +152,7 @@ function OnClickNext() {
         RemoveEventListeners();
         DrawQuiz();
     } else {
-        // Quiz completed
-        document.getElementById("Question").innerHTML = "Quiz Completed! 🎉";
-        document.getElementById("mcqdiv").style.visibility = "hidden";
-        document.getElementById("tfdiv").style.visibility = "hidden";
-        document.getElementById("fibdiv").style.visibility = "hidden";
-        document.getElementById("feedback").style.display = "none";
+        window.location.href = "../quiz_view/index.html";
     }
 }
 
@@ -152,7 +161,6 @@ function RemoveEventListeners() {
     for(let i = 0; i < options.length; i++) {
         let oldOption = options[i];
         let newOption = oldOption.cloneNode(true);
-        // Remove all classes except the base class
         newOption.className = "mcq_op";
         oldOption.parentNode.replaceChild(newOption, oldOption);
     }
@@ -161,7 +169,6 @@ function RemoveEventListeners() {
     for(let i = 0; i < options.length; i++) {
         let oldOption = options[i];
         let newOption = oldOption.cloneNode(true);
-        // Remove all classes except the base class
         newOption.className = "tf_op";
         oldOption.parentNode.replaceChild(newOption, oldOption);
     }

@@ -146,6 +146,10 @@ function FlashCardPopup(){
     ele.style.visibility = (ele.style.visibility === "visible") ? "hidden" : "visible";
 }
 
+function StoryPopup(){
+    let ele = document.getElementById("story_popup");
+    ele.style.visibility = (ele.style.visibility === "visible") ? "hidden" : "visible";
+}
 
 //This is for flashcards
 async function GenerateFlashCards()
@@ -177,4 +181,34 @@ async function GenerateFlashCards()
         console.log(error);
     }
 }
+
+
+async function GenerateStory()
+{
+    try{
+        const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
+            method:'POST',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({
+                "contents": [{
+                    "parts": [{"text":"Write a complete and creative short story that fully captures and communicates the core concept presented in the following source text. The story should express the main ideas, themes, or message through its characters, plot, and setting—without directly quoting or explaining the source. The concept sould be clearly understood by the reader through the narrative itself.Split the story into clearly defined sectionsnd dont give section titles a (such as Introduction, Conflict, Climax, Resolution, etc.), and separate each section using the symbol @#@. At the end provide a valid image link from pixabay that concuplises the theme Source text:"+prompt}]
+                }]
+            })
+        })
+        const data  = await response.json();
+        if (data.candidates && data.candidates[0].content) {
+            let text = data.candidates[0].content.parts[0].text;
+            sessionStorage.setItem("Story",text);
+            window.location.href = "/story/index.html";
+        } else {
+            console.log('No response');
+        }
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
 

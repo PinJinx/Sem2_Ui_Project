@@ -99,6 +99,23 @@
                     <button class="button" onclick="GenerateFlashCards()">Generate</button>
                 </div>
             </div>
+
+            <div id="story_popup" style="visibility: hidden;  position: fixed; height: 100%; width: 100%; backdrop-filter: blur(5px); z-index: 2; display: flex; justify-content: center; align-items: center;">
+                <div style="position: relative; z-index: 2; background-color: #f7f7f7; padding: 5rem; border-radius: 20px;">
+                    <!-- Close button -->
+                    <button onclick="StoryPopup()" style="position: absolute; top: 10px; right: 10px; border: none; background-color: #f7f7f7; cursor: pointer; padding: 5px; border-radius: 10px; z-index: 3;">
+                        <i class="bi bi-x" style="font-size: xx-large;"></i>
+                    </button>
+                    <!-- -------------- -->
+                    <h1>Story</h1>
+                    <div class="input-group">
+                        <h1 style="margin: 0;">Pages:</h1>
+                        <input type="number" id="card_num" min="1" max="50" value="10" style="background-color:  #f7f7f7; font-size: xx-large;" />
+                    </div>
+                    <button class="button" onclick="GenerateStory()">Generate</button>
+                </div>
+            </div>
+
             <div class="right-column">
                 <div  class="contentcards" onclick="QuizPopup()">
                     <h1>Quizzes</h1>
@@ -112,7 +129,7 @@
                     <h1>Notes</h1>
                     <img src="/assets/icons8-notes-100.png">
                 </div>
-                <div class="contentcards" onclick="FlashCardPopup()">
+                <div class="contentcards" onclick="StoryPopup()">
                     <h1>Story</h1>
                     <img src="/assets/icons8-literature-100.png">
                 </div>

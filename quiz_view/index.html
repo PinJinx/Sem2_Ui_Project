@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <title>Quiz Results - StudyApp</title>
+</head>
+<body>
+
+    <div class="results-container fade-in">
+        <div class="results-header">
+            <h1 class="results-title">Quiz Results</h1>
+            <div class="score-summary">
+                <div class="score-item">
+                    <div class="score-number" id="correct-count">0</div>
+                    <div class="score-label">Correct</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-number" id="total-count">0</div>
+                    <div class="score-label">Total</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-percentage" id="percentage">0%</div>
+                    <div class="score-label">Score</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="../dashboard/index.html" class="nav-btn1  nav-btn">Go to DashBoard</a>
+                <a href="../quiz/index.html" class="nav-btn2  nav-btn">Take the Quiz</a>
+            </div>
+        </div>
+
+        <div class="questions-list" id="questions-container">
+            <!-- Questions will be loaded here -->
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>

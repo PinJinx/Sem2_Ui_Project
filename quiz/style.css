@@ -154,7 +154,6 @@ body {
     opacity: 0.7;
 }
 
-/* Fill in Blank Styles */
 #fibdiv {
     display: flex;
     justify-content: center;
@@ -272,12 +271,6 @@ body {
     transform: translateY(0);
 }
 
-/* Initially hide all question types */
-#mcqdiv, #tfdiv, #fibdiv {
-    display: none;
-}
-
-/* Show MCQ by default for demo */
 #mcqdiv {
     display: grid;
 }
