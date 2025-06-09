@@ -152,7 +152,7 @@ function OnClickNext() {
         RemoveEventListeners();
         DrawQuiz();
     } else {
-        window.location.href = "../quiz_view/index.html";
+        window.location.href = "/Sem2_Ui_Project/quiz_view/index.html";
     }
 }
 

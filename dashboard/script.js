@@ -126,7 +126,7 @@ async function GenerateQuiz()
         if (data.candidates && data.candidates[0].content) {
             let text = data.candidates[0].content.parts[0].text;
             sessionStorage.setItem("quiz",text);
-            window.location.href = "/quiz/index.html";
+            window.location.href = "/Sem2_Ui_Project/quiz/index.html";
         } else {
             console.log('No response');
         }
@@ -172,7 +172,7 @@ async function GenerateFlashCards()
             let text = data.candidates[0].content.parts[0].text;
             //Its getting stored here
             sessionStorage.setItem("Cards",text);
-            window.location.href = "/flashcard/index.html";
+            window.location.href = "/Sem2_Ui_Project/flashcard/index.html";
         } else {
             console.log('No response');
         }
@@ -201,7 +201,7 @@ async function GenerateStory()
         if (data.candidates && data.candidates[0].content) {
             let text = data.candidates[0].content.parts[0].text;
             sessionStorage.setItem("Story",text);
-            window.location.href = "/story/index.html";
+            window.location.href = "/Sem2_Ui_Project/story/index.html";
         } else {
             console.log('No response');
         }

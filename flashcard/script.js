@@ -9,7 +9,7 @@ function updateFlashcard() {
     }
     else
     {
-        window.location.href = "/dashboard/index.html";
+        window.location.href = "/Sem2_Ui_Project/dashboard/index.html";
 
     }
     document.getElementById("flash").innerHTML = flashcards[index];
@@ -33,5 +33,5 @@ function forward() {
     }
 }
 function quit(){
-     window.location.href = "/dashboard/index.html";
+     window.location.href = "/Sem2_Ui_Project/dashboard/index.html";
 }
