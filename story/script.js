@@ -28,7 +28,6 @@ function updateFlashcard() {
     }
     document.getElementById("flash").innerHTML = flashcards[index];
     document.getElementById('contents').style.fontSize = index==0?"5rem":"2rem"
-    document.getElementById("flashNo").innerHTML = `${index + 1}/${flashcards.length}`;
 }
 
 updateFlashcard();
