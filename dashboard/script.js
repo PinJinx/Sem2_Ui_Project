@@ -166,8 +166,7 @@ async function GenerateFlashCards()
                 }]
             })
         })
-        const data  = await response.json();
-
+        const data = await response.json();
         if (data.candidates && data.candidates[0].content) {
             let text = data.candidates[0].content.parts[0].text;
             //Its getting stored here
@@ -193,7 +192,7 @@ async function GenerateStory()
             },
             body:JSON.stringify({
                 "contents": [{
-                    "parts": [{"text":"Write a complete and creative short story that fully captures and communicates the core concept presented in the following source text. The story should express the main ideas, themes, or message through its characters, plot, and setting—without directly quoting or explaining the source. The concept sould be clearly understood by the reader through the narrative itself.Split the story into clearly defined sectionsnd dont give section titles a (such as Introduction, Conflict, Climax, Resolution, etc.), and separate each section using the symbol @#@. At the end provide a valid image link from pixabay that concuplises the theme Source text:"+prompt}]
+                    "parts": [{"text":"Write a complete and creative short story that fully captures and communicates the core concept presented in the following source text. The story should express the main ideas, themes, or message through its characters, plot, and setting. The concept sould be clearly understood by the reader through the narrative itself.start with a title for the story(dont give text like 'title' with it)followed by @#@ then Split the story into clearly defined sections and dont give section titles a (such as Introduction, Conflict, Climax, Resolution, etc.), and separate each section using the symbol @#@.At the end of prompt append @#@ followed  keywords (without any title text like 'keywords:') that describe the content of each page seperate these keywords with $ Source text:"+prompt}]
                 }]
             })
         })
