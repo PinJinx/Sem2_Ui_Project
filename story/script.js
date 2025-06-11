@@ -7,7 +7,7 @@ function updateFlashcard() {
         flashcards = p.split('@#@');
         flashcards.pop()
         let keywords = p.split('@#@').pop().split("$");
-        let query = keywords[index];
+        let query = keywords[index-1];
         
         fetch(`https://api.unsplash.com/search/photos?query=${query}&client_id=KCRv8XcGZW8Al02Eeu0SAG1S3s4nIgRIk-DKF97ndmI`)
             .then(response => response.json())

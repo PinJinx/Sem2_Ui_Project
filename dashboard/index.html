@@ -107,11 +107,15 @@
                         <i class="bi bi-x" style="font-size: xx-large;"></i>
                     </button>
                     <!-- -------------- -->
-                    <h1>Story</h1>
-                    <div class="input-group">
-                        <h1 style="margin: 0;">Pages:</h1>
-                        <input type="number" id="card_num" min="1" max="50" value="10" style="background-color:  #f7f7f7; font-size: xx-large;" />
+                    <h1 style="text-align: center;">Story</h1>
+                    <div class="progress-bar-container" style="margin-top: 20px; margin-bottom: 40px; text-align: center;">
+                        <label for="story_closeness" style="font-size: large; display: block; margin-bottom: 10px;">Creativity:</label>
+                        <input type="range" id="story_closeness" min="0" max="100" value="50" style="width: 100%;" />
+                        <span id="story_closeness_value" style="font-size: medium; display: block; margin-top: 10px;">50%</span>
                     </div>
+                    <p style="font-size: medium; text-align: center; margin-top: 10px;">
+                        Creativity indicate how much the ai can divert story from the given prompt.
+                    </p>
                     <button class="button" onclick="GenerateStory()">Generate</button>
                 </div>
             </div>

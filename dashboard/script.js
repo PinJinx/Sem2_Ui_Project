@@ -6,7 +6,7 @@ let question_num = 10;
 let flashcard_num = 10;
 let question_difficulty = "easy";
 let questionformat = "mcq,";
-
+let storyCloseness = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     //Checking
@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(questionformat);
         })
     })
+
+    const storyClosenessInput = document.getElementById('story_closeness');
+    const storyClosenessValue = document.getElementById('story_closeness_value');
+    storyClosenessInput.addEventListener('input', () => {
+        storyCloseness=storyClosenessInput.value;
+        storyClosenessValue.textContent = `${storyCloseness}%`;
+    });
 
     document.querySelectorAll(".difficulty_bttns").forEach(element => {
         element.addEventListener('change', () => {
@@ -192,7 +199,7 @@ async function GenerateStory()
             },
             body:JSON.stringify({
                 "contents": [{
-                    "parts": [{"text":"Write a complete and creative short story that fully captures and communicates the core concept presented in the following source text. The story should express the main ideas, themes, or message through its characters, plot, and setting. The concept sould be clearly understood by the reader through the narrative itself.start with a title for the story(dont give text like 'title' with it)followed by @#@ then Split the story into clearly defined sections and dont give section titles a (such as Introduction, Conflict, Climax, Resolution, etc.), and separate each section using the symbol @#@.At the end of prompt append @#@ followed  keywords (without any title text like 'keywords:') that describe the content of each page seperate these keywords with $ Source text:"+prompt}]
+                    "parts": [{"text":`Write a complete and creative short story that captures and communicates about the core concept where you can take upto ${100-storyCloseness}/100 liberty (where 0 -> fully creative 100 ->strictly only on text) presented in the following source text. The story should express the main ideas, themes, or message through its characters, plot, and setting. The concept sould be clearly understood by the reader through the narrative itself.start with a title for the story(dont give text like 'title' with it)followed by @#@ then Split the story into clearly defined sections and dont give section titles a (such as Introduction, Conflict, Climax, Resolution, etc.), and separate each section using the symbol @#@.At the end of prompt append @#@ followed  keywords (without any title text like 'keywords:') that describe the content of each page seperate these keywords with $ Source text:`+prompt}]
                 }]
             })
         })
