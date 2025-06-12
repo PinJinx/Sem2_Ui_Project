@@ -46,6 +46,8 @@ function forward() {
         updateFlashcard();
     }
 }
+
+
 function quit(){
     window.location.href = "/Sem2_Ui_Project/dashboard/index.html";
 }

@@ -9,7 +9,8 @@ let questionformat = "mcq,";
 let storyCloseness = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    //Checking
+    document.getElementById("loading").style.visibility = "hidden";
+    document.getElementById('prompt').innerHTML = "";
     document.getElementById('prompt').addEventListener('change',(event)=>{
         prompt = event.target.value;
         sessionStorage.setItem("prompt",prompt);
@@ -66,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function onGenerateSummary()
 {
+    if(prompt.length === 0){
+        alert("Please enter a source material to continue!");
+        return;
+    }
     document.getElementById("summary_placeholder").innerHTML = 'Hold on tight! Generating feed!';
     try{
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
@@ -104,7 +109,11 @@ async function onGenerateSummary()
 
 async function GenerateQuiz()
 {
-
+    if(prompt.length === 0){
+        alert("Please enter a source material to continue!");
+        return;
+    }
+    document.getElementById("loading").style.visibility = "visible";
     try{
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
             method:'POST',
@@ -114,7 +123,7 @@ async function GenerateQuiz()
             body:JSON.stringify({
                 "contents": [{
                     "parts": [{"text":`Generate a quiz with ${question_difficulty} difficulty having ${question_num} much questions with the following question types:${questionformat} on the topic: ${prompt} The response should be in JSON format with the following structure make sure it is easily parsable in js:
-                        {
+                    {
                             "title": "Something Quiz",
                             "difficulty": "${question_difficulty}",
                             "questions": [
@@ -125,7 +134,7 @@ async function GenerateQuiz()
                                 "answer": "Correct option/answer here"
                             },
                         ]
-                        }`}]
+                    }`}]
                 }]
             })
         })
@@ -158,9 +167,14 @@ function StoryPopup(){
     ele.style.visibility = (ele.style.visibility === "visible") ? "hidden" : "visible";
 }
 
-//This is for flashcards
+
 async function GenerateFlashCards()
 {
+    if(prompt.length === 0){
+        alert("Please enter a source material to continue!");
+        return;
+    }
+    document.getElementById("loading").style.visibility = "visible";
     try{
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
             method:'POST',
@@ -192,6 +206,11 @@ async function GenerateFlashCards()
 
 async function GenerateNotes()
 {
+    if(prompt.length === 0){
+        alert("Please enter a source material to continue!");
+        return;
+    }
+    document.getElementById("loading").style.visibility = "visible";
     try{
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
             method:'POST',
@@ -224,7 +243,12 @@ async function GenerateNotes()
 
 async function GenerateStory()
 {
+    if(prompt.length === 0){
+        alert("Please enter a source material to continue!");
+        return;
+    }
     try{
+        document.getElementById("loading").style.visibility = "visible";
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
             method:'POST',
             headers:{
