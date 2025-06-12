@@ -189,6 +189,39 @@ async function GenerateFlashCards()
 }
 
 
+
+async function GenerateNotes()
+{
+    try{
+        const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="+apikey,{
+            method:'POST',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({
+                "contents": [{
+                    "parts": [{"text":'Generate clear, structured study notes on' +prompt+', including an introduction, key concepts, bullet points, examples, and a summary, in a beginner-friendly academic tone.The response should be formatter such that it works as innerHtml of a paragraph'}]
+                }]
+            })
+        })
+        const data  = await response.json();
+        if (data.candidates && data.candidates[0].content) {
+            let text = data.candidates[0].content.parts[0].text;
+            sessionStorage.setItem("notes",text);
+            window.location.href = "/Sem2_Ui_Project/notes/index.html";
+        } else {
+            console.log('No response');
+        }
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+
+
+
+
 async function GenerateStory()
 {
     try{

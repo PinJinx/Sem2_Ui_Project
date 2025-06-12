@@ -1,0 +1,90 @@
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box {
+    flex: 1;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(124, 92, 252, 0.1);
+}
+
+.box h1 {
+    font-size: large;
+    margin-top: 0;
+    color: #333333;
+}
+
+.flashcard-container {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+#cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-height: 70vh;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+#contents {
+    color: black;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 100%; 
+    padding-right: 10px;
+}
+
+.card-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+i {
+    font-size: 3.5rem;
+    color: #7c5cfc;
+    transition: color 0.3s;
+}
+
+i:hover {
+    color: black;
+}
+
+#quit {
+    margin-top: 30px;
+    background-color: #f2f2f2;
+    color: #7c5cfc;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 18px;
+}
+
+#quit:hover {
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+}
+
+p {
+    color: black;
+}
