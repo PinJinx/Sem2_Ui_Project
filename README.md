@@ -1,4 +1,8 @@
 # 📘 AI Study Buddy
+---
+Website Link:https://pinjinx.github.io/Sem2_Ui_Project/
+
+---
 
 AI Study Buddy is an AI-powered web platform that allows users to upload educational content (like book excerpts, notes, or scanned pages) and instantly receive **quizzes**, **flashcards**, **summaries**, and even **stories** based on the uploaded material. The goal is to make studying smarter, faster, and more engaging.
 
